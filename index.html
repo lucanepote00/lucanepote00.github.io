@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luca Nepote — PhD Researcher, Machine Learning</title>
+<style>
+  :root {
+    --paper: #fbfaf7;
+    --ink: #1f1d1a;
+    --muted: #6b6660;
+    --line: #d8d3c8;
+    --rule: #1f1d1a;
+    --accent: #6b2f2a;      /* deep bookish maroon */
+    --maxw: 760px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    font-size: 18px; line-height: 1.62; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(107,47,42,0.3); }
+  a:hover { border-bottom-color: var(--accent); }
+
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251,250,247,0.9); backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
+    display: flex; align-items: center; justify-content: space-between; height: 58px;
+  }
+  .nav-name { font-variant: small-caps; letter-spacing: 1px; font-size: 17px; font-weight: 600; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px;
+    font-family: Georgia, serif; border-bottom: none;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-toggle { display: none; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--ink); }
+
+  /* ---------- HERO: text left, photo right ---------- */
+  header.hero {
+    max-width: var(--maxw); margin: 0 auto; padding: 72px 28px 44px;
+    display: flex; align-items: center; gap: 40px;
+  }
+  .hero-text { flex: 1 1 auto; text-align: left; }
+  .hero-photo { flex: 0 0 auto; }
+  .hero-photo img {
+    width: 168px; height: 168px; object-fit: cover; border-radius: 50%;
+    border: 1px solid var(--line);
+    box-shadow: 0 2px 18px rgba(31,29,26,0.08);
+    display: block;
+  }
+  /* placeholder shown until you drop in a real photo */
+  .hero-photo .placeholder {
+    width: 168px; height: 168px; border-radius: 50%;
+    border: 1px dashed var(--line); background: #f1efe9;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-family: Georgia, serif; font-size: 12px;
+    text-align: center; letter-spacing: 1px; text-transform: uppercase; line-height: 1.5;
+  }
+  .eyebrow {
+    font-family: Georgia, serif; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 2.5px; color: var(--accent); margin-bottom: 16px;
+  }
+  h1 { font-size: 46px; margin: 0 0 8px; font-weight: 600; letter-spacing: -0.5px; line-height: 1.05; }
+  .role { font-size: 20px; font-style: italic; color: var(--muted); margin: 0 0 20px; }
+  .rule-orn { width: 56px; height: 1px; background: var(--rule); margin: 0 0 20px; }
+  .summary { max-width: 520px; margin: 0 0 24px; font-size: 17.5px; }
+  .contact {
+    display: flex; flex-wrap: wrap; gap: 6px 22px;
+    font-family: Georgia, serif; font-size: 14px;
+  }
+  .contact a { color: var(--ink); border-bottom: 1px solid var(--line); }
+  .contact a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ---------- SECTIONS ---------- */
+  section { max-width: var(--maxw); margin: 0 auto; padding: 44px 28px; }
+  .sec-head { text-align: center; margin-bottom: 32px; }
+  h2 {
+    font-size: 16px; margin: 0; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 3px; color: var(--ink); position: relative; display: inline-block;
+  }
+  h2::after { content: ""; display: block; width: 36px; height: 1px; background: var(--accent); margin: 10px auto 0; }
+
+  .entry { margin-bottom: 30px; text-align: left; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-title { font-weight: 600; font-size: 19px; }
+  .entry-org { font-style: italic; }
+  .entry-meta {
+    font-family: Georgia, serif; font-size: 13px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.8px; margin: 2px 0 8px;
+  }
+  .entry ul { margin: 0; padding-left: 20px; }
+  .entry li { margin-bottom: 5px; }
+  .entry li::marker { color: var(--accent); }
+  .ext { font-size: 12px; border-bottom: none; }
+
+  .pub { text-align: left; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+  .pub:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .pub .title { font-size: 19px; font-weight: 600; margin-bottom: 4px; }
+  .pub .authors { color: var(--muted); }
+  .pub .authors .me { color: var(--ink); font-weight: 600; }
+  .pub .venue {
+    font-family: Georgia, serif; font-size: 13px; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; display: block;
+  }
+
+  .skill-row { display: grid; grid-template-columns: 150px 1fr; gap: 18px; padding: 10px 0; border-bottom: 1px solid var(--line); text-align: left; }
+  .skill-row:last-child { border-bottom: none; }
+  .skill-cat { font-family: Georgia, serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--accent); }
+  .skill-items { font-size: 17px; }
+
+  .compact { text-align: left; }
+  .compact .item { margin-bottom: 8px; }
+  .compact .item .where { color: var(--muted); font-style: italic; }
+  h3.sub { text-align: center; font-family: Georgia, serif; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin: 0 0 16px; }
+
+  footer {
+    max-width: var(--maxw); margin: 0 auto; padding: 36px 28px 64px;
+    border-top: 1px solid var(--line); text-align: center;
+    font-family: Georgia, serif; font-size: 12px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1.5px;
+  }
+
+  @media (max-width: 680px) {
+    header.hero { flex-direction: column-reverse; text-align: left; gap: 24px; align-items: flex-start; }
+    .hero-photo img, .hero-photo .placeholder { width: 132px; height: 132px; }
+    h1 { font-size: 38px; }
+    .nav-links { position: absolute; top: 58px; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--line); flex-direction: column; gap: 0; padding: 8px 0; display: none; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 10px 28px; }
+    .nav-toggle { display: block; }
+    .skill-row { grid-template-columns: 1fr; gap: 3px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">Luca Nepote</span>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="navlinks">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#publications">Publications</a>
+      <a href="#education">Education</a><a href="#skills">Skills</a><a href="#more">More</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="about">
+  <div class="hero-text">
+    <div class="eyebrow">PhD Researcher · Machine Learning</div>
+    <h1>Luca Nepote</h1>
+    <p class="role">Generative models &amp; trajectory inference</p>
+    <div class="rule-orn"></div>
+    <p class="summary">
+      PhD researcher in Machine Learning, working on generative models and trajectory inference.
+      Background spanning data science, quantum computing, and physics. Seeking a 3–6 month research internship.
+    </p>
+    <div class="contact">
+      <a href="mailto:luca.nepote2000@gmail.com">luca.nepote2000@gmail.com</a>
+      <a href="https://github.com/lucanepote00" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/luca-nepote/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="photo.jpg" alt="Luca Nepote">
+  </div>
+</header>
+
+<section id="experience">
+  <div class="sec-head"><h2>Research Experience</h2></div>
+
+  <div class="entry">
+    <div class="entry-title">PhD Researcher</div>
+    <div class="entry-org">Eurecom (ProbAI group)
+      <a class="ext" href="https://www.eurecom.fr/fr" target="_blank" rel="noopener">↗</a></div>
+    <div class="entry-meta">Sophia Antipolis, France · Jun 2025 — Ongoing</div>
+    <ul>
+      <li>Working on generative models and trajectory inference methods for biological applications.</li>
+      <li>Developed a novel methodology to evaluate trajectory inference methods in function space.
+        <a class="ext" href="https://github.com/eurecom-probai/functional-kl" target="_blank" rel="noopener">[code]</a></li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">Quantum AI Research Intern</div>
+    <div class="entry-org">Amadeus IT (Research Team)
+      <a class="ext" href="https://amadeus.com/en" target="_blank" rel="noopener">↗</a></div>
+    <div class="entry-meta">Villeneuve Loubet, France · Sep 2024 — Feb 2025</div>
+    <ul>
+      <li>Explored Variational Quantum Algorithms for Quantum Machine Learning to enhance AI energy scalability.</li>
+      <li>Improved accuracy by 10% by integrating a Variational Quantum Algorithm and Variational Inference with Binary Neural Networks.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">Research Intern</div>
+    <div class="entry-org">INRiM — National Institute of Metrological Research
+      <a class="ext" href="https://www.inrim.it/en" target="_blank" rel="noopener">↗</a></div>
+    <div class="entry-meta">Turin, Italy · Nov 2021 — Jun 2022</div>
+    <ul>
+      <li>Explored and automated mathematical models for magnetic hyperthermia, simulating pre-clinical tests for different nanoparticles.</li>
+      <li>Used ML models in MATLAB to generalize results to unseen data, reducing the need for additional real-world tests.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="sec-head"><h2>Publications</h2></div>
+  <div class="pub">
+    <div class="title">Relative Entropy Estimation in Function Space: Theory and Applications to Trajectory Inference</div>
+    <div class="authors">C. Wang*, <span class="me">L. Nepote*</span>, G. Franzese, P. Michiardi · *equal contribution</div>
+    <span class="venue">ICML 2026 · Main Conference · Seoul
+      <a class="ext" href="https://openreview.net/forum?id=cpKJ2GlnYT" target="_blank" rel="noopener">↗</a></span>
+  </div>
+  <div class="pub">
+    <div class="title">Variational Inference for Quantum HyperNetworks</div>
+    <div class="authors"><span class="me">L. Nepote</span>, A. Lhéritier, N. Bondoux, M. Kountouris, M. Filippone</div>
+    <span class="venue">IJCNN 2025 · Quantum Workshop (Oral) · Rome
+      <a class="ext" href="https://ieeexplore.ieee.org/document/11228637" target="_blank" rel="noopener">↗</a></span>
+  </div>
+</section>
+
+<section id="education">
+  <div class="sec-head"><h2>Education</h2></div>
+  <div class="entry">
+    <div class="entry-title">PhD, Machine Learning</div>
+    <div class="entry-org">Sorbonne Université</div>
+    <div class="entry-meta">Sophia Antipolis, France · 2025 — Ongoing</div>
+    <ul><li>Hosted at Eurecom, ProbAI group (Alpha AI Center). Advisors:
+      <a href="https://michiard.eurecom.io/" target="_blank" rel="noopener">P. Michiardi</a>,
+      <a href="https://franzese.eurecom.io/" target="_blank" rel="noopener">G. Franzese</a>.</li></ul>
+  </div>
+  <div class="entry">
+    <div class="entry-title">MSc, Data Science</div>
+    <div class="entry-org">Eurecom</div>
+    <div class="entry-meta">Sophia Antipolis, France · 2023 — 2025</div>
+    <ul><li>Double Degree in Data Science and Telecommunications Engineering.</li></ul>
+  </div>
+  <div class="entry">
+    <div class="entry-title">MSc, Telecommunications Engineering</div>
+    <div class="entry-org">Polytechnic of Turin</div>
+    <div class="entry-meta">Turin, Italy · 2022 — 2025</div>
+    <ul><li>Grade: 110/110 cum laude. Double Degree in Data Science and Telecommunications Engineering.</li></ul>
+  </div>
+  <div class="entry">
+    <div class="entry-title">BSc, Physics Engineering</div>
+    <div class="entry-org">Polytechnic of Turin</div>
+    <div class="entry-meta">Turin, Italy · 2019 — 2022</div>
+    <ul><li>Grade: 108/110. Thesis: “Numerical Modeling of Magnetic Resonance Imaging: Calculation of T2 Parameter of Tissues”, INRiM.</li></ul>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec-head"><h2>Technical Skills</h2></div>
+  <div class="skill-row"><div class="skill-cat">Programming</div><div class="skill-items">Python, MATLAB</div></div>
+  <div class="skill-row"><div class="skill-cat">ML Frameworks</div><div class="skill-items">PyTorch, TensorFlow, Jax, Qujax, Qiskit</div></div>
+  <div class="skill-row"><div class="skill-cat">Architectures</div><div class="skill-items">Generative / Diffusion Models, VAEs, Variational Inference, HyperNetworks</div></div>
+  <div class="skill-row"><div class="skill-cat">Tools</div><div class="skill-items">Git / GitHub, Linux / Unix, LaTeX</div></div>
+  <div class="skill-row"><div class="skill-cat">Languages</div><div class="skill-items">Italian (Native), English (Professional), French (Intermediate)</div></div>
+</section>
+
+<section id="more">
+  <div class="sec-head"><h2>Certifications &amp; Awards</h2></div>
+  <h3 class="sub">Courses &amp; Certifications</h3>
+  <div class="compact" style="margin-bottom:28px;">
+    <div class="item">Qiskit Global Summer School 2024 — “Path to Utility” <span class="where">· IBM</span></div>
+    <div class="item">Qiskit Global Summer School 2023 — “From Theory to Implementation” <span class="where">· IBM</span></div>
+    <div class="item">CODAS Summer School 2023 — BIP ERASMUS+ <span class="where">· Aalto University</span></div>
+    <div class="item">Project Management 2024 <span class="where">· Eurecom</span></div>
+  </div>
+  <h3 class="sub">Scholarships</h3>
+  <div class="compact">
+    <div class="item">Scholarship, Double Degree Program <span class="where">· Polytechnic of Turin – Eurecom</span></div>
+    <div class="item">Scholarship, CODAS Summer School <span class="where">· Aalto University</span></div>
+    <div class="item">Tuition Reduction for Merit <span class="where">· Polytechnic of Turin</span></div>
+  </div>
+
+  <!-- ============================================================
+       ADD MORE SUBSECTIONS HERE.
+       Copy this block, change the <h3 class="sub"> title and items.
+       Examples you might add later: Talks, Teaching, Service,
+       Selected Projects, Reviewing, Interests.
+
+  <h3 class="sub" style="margin-top:28px;">Talks</h3>
+  <div class="compact">
+    <div class="item">Title of talk <span class="where">· Venue, Year</span></div>
+  </div>
+  ============================================================= -->
+</section>
+
+<footer>Luca Nepote — Sophia Antipolis, France</footer>
+
+<script>
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){ document.getElementById('navlinks').classList.remove('open'); });
+  });
+</script>
+</body>
+</html>
